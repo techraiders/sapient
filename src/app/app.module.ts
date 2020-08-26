@@ -11,7 +11,7 @@ import { AppRoutingModule } from './app.routing.module';
 @NgModule({
   declarations: [AppComponent],
   imports: [
-    BrowserModule,
+    BrowserModule.withServerTransition({ appId: 'serverApp' }),
     ServiceWorkerModule.register('ngsw-worker.js', {
       enabled: environment.production,
     }),
