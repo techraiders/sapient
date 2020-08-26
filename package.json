@@ -7,7 +7,11 @@
     "build": "ng build",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "dev:ssr": "ng run navneet:serve-ssr",
+    "serve:ssr": "node dist/navneet/server/main.js",
+    "build:ssr": "ng build --prod && ng run navneet:server:production",
+    "prerender": "ng run navneet:prerender"
   },
   "private": true,
   "dependencies": {
@@ -20,9 +24,12 @@
     "@angular/material": "^10.1.3",
     "@angular/platform-browser": "~10.0.11",
     "@angular/platform-browser-dynamic": "~10.0.11",
+    "@angular/platform-server": "~10.0.11",
     "@angular/router": "~10.0.11",
     "@angular/service-worker": "~10.0.11",
+    "@nguniversal/express-engine": "^10.0.2",
     "bootstrap": "^4.5.2",
+    "express": "^4.15.2",
     "rxjs": "~6.5.5",
     "tslib": "^2.0.0",
     "zone.js": "~0.10.3"
@@ -31,6 +38,8 @@
     "@angular-devkit/build-angular": "~0.1000.7",
     "@angular/cli": "~10.0.7",
     "@angular/compiler-cli": "~10.0.11",
+    "@nguniversal/builders": "^10.0.2",
+    "@types/express": "^4.17.0",
     "@types/node": "^12.11.1",
     "@types/jasmine": "~3.5.0",
     "@types/jasminewd2": "~2.0.3",
