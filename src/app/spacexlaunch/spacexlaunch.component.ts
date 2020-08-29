@@ -7,9 +7,14 @@ import { SpacexlaunchService } from './spacexlaunch.service';
   styleUrls: ['./spacexlaunch.component.scss'],
 })
 export class SpacexlaunchComponent implements OnInit {
-  constructor(private sls: SpacexlaunchService) {}
+  years;
+  constructor(private sls: SpacexlaunchService) {
+    this.years = this.sls.years;
+  }
 
   ngOnInit(): void {
-    this.sls.getLaunches();
+    this.sls.getLaunches().subscribe((r) => {
+      console.log(r);
+    });
   }
 }
