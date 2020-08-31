@@ -1,5 +1,4 @@
 .jumbotron {
-  background-color: #f2f2f2;
   color: #020202;
   text-align: center;
   height: 130px;
@@ -8,8 +7,12 @@
   }
 }
 
+.mat-card {
+  margin-bottom: 15px;
+}
+
 .filters-card {
-  .launch-year {
+  .filters-heading {
     text-align: center;
     padding: 10px;
     font-weight: 400;
@@ -18,19 +21,46 @@
     width: 70%;
     margin-bottom: 25px;
   }
-  .year-button-columns {
+  .filters-btns-cols {
     text-align: center;
     margin-bottom: 18px;
 
     .mat-primary {
       background-color: #c5e09b;
       color: #010502;
-      width: 130px;
-      height: 40px;
+      width: 118px;
+      height: 44px;
       border-radius: 7px;
     }
     .mat-primary.active {
       background-color: #7cba16;
     }
+  }
+}
+
+.launches-grid {
+  text-align: center;
+  .mat-card-image {
+    background-color: #f2f2f2;
+    height: 80%;
+    width: 80%;
+  }
+  .mat-card-content {
+    text-align: left;
+    th {
+      width: 106px;
+    }
+    .mission-row {
+      color: #383f90;
+    }
+    .mission-id-list {
+      margin-bottom: 0;
+    }
+  }
+}
+
+footer {
+  .mat-h1 {
+    text-align: center;
   }
 }

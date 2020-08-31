@@ -1,5 +1,6 @@
 import { Component, PLATFORM_ID, Inject, OnInit } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
+import { SharedService } from './shared/shared.service';
 
 @Component({
   selector: 'app-root',
@@ -8,8 +9,9 @@ import { isPlatformBrowser } from '@angular/common';
 })
 export class AppComponent implements OnInit {
   title = 'navneet';
+  loading;
 
-  constructor(@Inject(PLATFORM_ID) private platformId) {}
+  constructor(@Inject(PLATFORM_ID) private platformId, private sharedService: SharedService) {}
 
   ngOnInit(): void {
     if (isPlatformBrowser(this.platformId)) {
@@ -17,5 +19,6 @@ export class AppComponent implements OnInit {
     } else {
       console.log('platform is not browser');
     }
+    this.loading = this.sharedService.loading;
   }
 }

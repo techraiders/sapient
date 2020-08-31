@@ -1,3 +1,5 @@
 <div>
+  <mat-progress-spinner *ngIf="loading | async" class="example-margin" [color]="'primary'" [mode]="'indeterminate'">
+  </mat-progress-spinner>
   <router-outlet></router-outlet>
 </div>
