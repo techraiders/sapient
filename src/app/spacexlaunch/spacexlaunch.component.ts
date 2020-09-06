@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { SpacexlaunchService } from './spacexlaunch.service';
-import { ActivatedRoute, Router, ParamMap, Params } from '@angular/router';
+import { ActivatedRoute, Router, ParamMap, Params, Data } from '@angular/router';
 import { SharedService } from '../shared/shared.service';
+import { SpacexLaunch } from "./spacexlaunch.interface";
 
 @Component({
   selector: 'app-spacexlaunch',
@@ -10,7 +11,7 @@ import { SharedService } from '../shared/shared.service';
 })
 export class SpacexlaunchComponent implements OnInit {
   years;
-  launches;
+  launches: Array<SpacexLaunch>;
 
   selectedFilters = {
     launch_year: null,
@@ -28,32 +29,9 @@ export class SpacexlaunchComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.activatedRoute.data.subscribe(this.processInputs.bind(this));
-
-    this.activatedRoute.queryParams.subscribe(
-      ({ launch_year, launch_success, land_success }: Params) => {
-        if (launch_year) {
-          this.selectedFilters.launch_year = +launch_year;
-        }
-        if (launch_success) {
-          this.selectedFilters.launch_success = launch_success === 'true';
-        }
-        if (land_success) {
-          this.selectedFilters.land_success = land_success === 'true';
-        }
-        if (
-          launch_year ||
-          (launch_success !== null && launch_success !== undefined) ||
-          (land_success !== null && land_success !== undefined)
-        ) {
-          this.sls
-            .getLaunches({ launch_year, land_success, launch_success })
-            .subscribe((launches) => {
-              this.processInputs({launches});
-            });
-        }
-      }
-    );
+    this.activatedRoute.data.subscribe((data: Data) => {      
+      this.launches = this.processInputs(data);
+    });
   }
 
   onFilterChange(filter): void {
@@ -64,11 +42,11 @@ export class SpacexlaunchComponent implements OnInit {
     });
   }
 
-  private processInputs({ launches }): any {
+  private processInputs({ launches }: Data) {
     setTimeout(() => {
       this.sharedService.loading.next(false);
     }, 3000);
-    this.launches = launches.map(
+    return launches.map(
       (
         {
           mission_name,
@@ -97,6 +75,5 @@ export class SpacexlaunchComponent implements OnInit {
         };
       }
     );
-    console.log(this.launches);
   }
 }

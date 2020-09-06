@@ -6,6 +6,7 @@ import {
 } from '@angular/router';
 import { Observable } from 'rxjs';
 import { SpacexlaunchService } from './spacexlaunch.service';
+import { SpacexLaunch } from './spacexlaunch.interface';
 
 @Injectable()
 export class SpacexResolveGuard implements Resolve<any> {
@@ -13,7 +14,7 @@ export class SpacexResolveGuard implements Resolve<any> {
   resolve(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot
-  ): Observable<any> | Promise<any> | any {
+  ): Observable<Array<SpacexLaunch>> {    
     return this.sls.getLaunches(route.queryParams);
   }
 }

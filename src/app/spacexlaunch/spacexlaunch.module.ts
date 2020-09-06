@@ -10,7 +10,8 @@ const routes: Routes = [
   {
     path: '',
     component: SpacexlaunchComponent,
-    resolve: { launches: SpacexResolveGuard }
+    resolve: { launches: SpacexResolveGuard },
+    runGuardsAndResolvers: 'always',
   },
 ];
 

@@ -5,6 +5,7 @@
 
   <div class="container-fluid">
     <div class="row">
+      <!-- Filters -->
       <div class="col-sm-6 col-lg-4 col-xl-3">
         <mat-card class="filters-card">
           <mat-card-header>
@@ -88,52 +89,52 @@
           </mat-card-content>
         </mat-card>
       </div>
+      <!-- End of Filters -->
+
+      <!-- Grid / Gallery -->
       <div class="col-sm-6 col-lg-8 col-xl-9">
         <div class="row">
-          <div class="col-lg-6 col-xl-3" *ngFor="let item of launches">
-            <mat-card class="launches-grid">
-              <img
-                mat-card-image
+          <div class="col-lg-6 col-xl-3 launches-grid" *ngFor="let item of launches">
+            <figure class="card-wrapper">
+              <img class="card-img"
                 [src]="item.mission_patch_small"
                 alt="Missio Photo"
                 loading="lazy"
               />
-              <mat-card-content>
-                <table>
-                  <tbody>
-                    <tr class="mission-row">
-                      <th>{{ item.mission_name }}</th>
-                      <td>#{{ item.flight_number }}</td>
-                    </tr>
-                    <tr>
-                      <th>Mission Ids:</th>
-                      <td></td>
-                    </tr>
-                    <tr>
-                      <td>
-                        <ul class="mission-id-list">
-                          <li *ngFor="let item of item.mission_id">
-                            {{ item }}
-                          </li>
-                        </ul>
-                      </td>
-                    </tr>
-                    <tr>
-                      <th>Launch Year:</th>
-                      <td>{{ item.launch_year }}</td>
-                    </tr>
-                    <tr>
-                      <th>Successful Launch:</th>
-                      <td>{{ item.launch_success }}</td>
-                    </tr>
-                    <tr>
-                      <th>Successful Landing:</th>
-                      <td>{{ item.land_success }}</td>
-                    </tr>
-                  </tbody>
-                </table>
-              </mat-card-content>
-            </mat-card>
+              <table class="card-content">
+                <tbody>
+                  <tr class="mission-row">
+                    <th>{{ item.mission_name }}</th>
+                    <td>#{{ item.flight_number }}</td>
+                  </tr>
+                  <tr>
+                    <th>Mission Ids:</th>
+                    <td></td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <ul class="mission-id-list">
+                        <li *ngFor="let item of item.mission_id">
+                          {{ item }}
+                        </li>
+                      </ul>
+                    </td>
+                  </tr>
+                  <tr>
+                    <th>Launch Year:</th>
+                    <td>{{ item.launch_year }}</td>
+                  </tr>
+                  <tr>
+                    <th>Successful Launch:</th>
+                    <td>{{ item.launch_success }}</td>
+                  </tr>
+                  <tr>
+                    <th>Successful Landing:</th>
+                    <td>{{ item.land_success }}</td>
+                  </tr>
+                </tbody>
+              </table>
+            </figure>
           </div>
           <div class="col-12" *ngIf="!launches.length">
             <h1 class="mat-h1">
@@ -143,6 +144,7 @@
           </div>
         </div>
       </div>
+      <!-- End of Grid / Gallery -->
     </div>
   </div>
 

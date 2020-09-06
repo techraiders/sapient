@@ -40,21 +40,29 @@
 
 .launches-grid {
   text-align: center;
-  .mat-card-image {
-    background-color: #f2f2f2;
-    height: 80%;
-    width: 80%;
-  }
-  .mat-card-content {
-    text-align: left;
-    th {
-      width: 106px;
+  margin: 15px;
+  margin-top: 0;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2), 0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
+  .card-wrapper {
+    .card-image {
+      background-color: #f2f2f2;
+      height: 80%;
+      width: 80%;
     }
-    .mission-row {
-      color: #383f90;
-    }
-    .mission-id-list {
-      margin-bottom: 0;
+    .card-content {
+      margin-top: 20px;
+      text-align: left;
+      th {
+        width: 106px;
+      }
+      .mission-row {
+        color: #383f90;
+      }
+      .mission-id-list {
+        margin-bottom: 0;
+      }
     }
   }
 }
