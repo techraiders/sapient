@@ -8,14 +8,14 @@
   "scripts": {
     "ng": "ng",
     "start": "npm run serve:ssr",
-    "build": "ng run build:ssr",
+    "build": "npm run build:ssr",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "dev:ssr": "ng run navneet:serve-ssr",
+    "dev:ssr": "npm run navneet:serve-ssr",
     "serve:ssr": "node dist/navneet/server/main.js",
     "build:ssr": "ng build --prod=true --aot=true --buildOptimizer=true --optimization=true --outputHashing=all --progress=true && ng run navneet:server:production",
-    "prerender": "ng run navneet:prerender",
+    "prerender": "npm run navneet:prerender",
     "prebuild:ssr": "ngcc"
   },
   "private": true,
