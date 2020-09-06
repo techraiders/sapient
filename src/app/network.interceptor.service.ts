@@ -24,13 +24,6 @@ export class NetworkInterceptor implements HttpInterceptor {
       headers,
       url: `${environment.scheme}${environment.subdomain}${environment.secondLevelDomain}${environment.topLevelDomain}${environment.path}${url}`,
     });
-    if (navigator && navigator.onLine) {
-      return next.handle(authReq);
-    } else {
-      this.snackBar.open(`Please connect to the internet`, `OK`, {
-        politeness: 'assertive',
-        verticalPosition: 'top'
-      });
-    }
+    return next.handle(authReq);
   }
 }
