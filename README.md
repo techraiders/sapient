@@ -10,6 +10,7 @@
   - Filters records by launch year, launch success, and land success.
   - Renders the first page on the server using NestJs.
   - Page is responsive on mobile, tablet, and desktop devices.
+  - Installs as PWA in your device, irrespective of operating system.
   
 ##### [Working Demo](https://navneet-is-sapient.herokuapp.com/#/spacex-launch) 
 
