@@ -5,5 +5,5 @@ import { BehaviorSubject } from 'rxjs';
   providedIn: 'root'
 })
 export class SharedService {
-  loading = new BehaviorSubject(null);
+  loading = new BehaviorSubject<boolean>(null);
 }

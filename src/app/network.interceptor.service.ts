@@ -8,10 +8,11 @@ import {
 import { Observable } from 'rxjs';
 
 import { environment } from 'src/environments/environment';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Injectable()
 export class NetworkInterceptor implements HttpInterceptor {
-  constructor() {}
+  constructor(private snackBar: MatSnackBar) {}
 
   intercept(
     req: HttpRequest<any>,
@@ -23,6 +24,13 @@ export class NetworkInterceptor implements HttpInterceptor {
       headers,
       url: `${environment.scheme}${environment.subdomain}${environment.secondLevelDomain}${environment.topLevelDomain}${environment.path}${url}`,
     });
-    return next.handle(authReq);
+    if (navigator && navigator.onLine) {
+      return next.handle(authReq);
+    } else {
+      this.snackBar.open(`Please connect to the internet`, `OK`, {
+        politeness: 'assertive',
+        verticalPosition: 'top'
+      });
+    }
   }
 }
