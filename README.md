@@ -1,7 +1,7 @@
-##### Sapient Assignment
+### Sapient Assignment
 
 
-# Powered By:
+## Powered By:
 [![N|Solid](https://miro.medium.com/max/3200/1*F83F9d1ki3fG6LMG3AvIMg.png)](https://nodesource.com/products/nsolid)
 
 [![Build Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master)]()
@@ -11,7 +11,7 @@
   - Renders the first page on the server using NestJs.
   - Page is responsive on mobile, tablet, and desktop devices.
   
-#### [Working Demo](https://navneet-is-sapient.herokuapp.com/#/spacex-launch) 
+##### [Working Demo](https://navneet-is-sapient.herokuapp.com/#/spacex-launch) 
 
 ### Tech
 
