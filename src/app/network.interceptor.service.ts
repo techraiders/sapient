@@ -8,11 +8,10 @@ import {
 import { Observable } from 'rxjs';
 
 import { environment } from 'src/environments/environment';
-import { MatSnackBar } from '@angular/material/snack-bar';
 
 @Injectable()
 export class NetworkInterceptor implements HttpInterceptor {
-  constructor(private snackBar: MatSnackBar) {}
+  constructor() {}
 
   intercept(
     req: HttpRequest<any>,

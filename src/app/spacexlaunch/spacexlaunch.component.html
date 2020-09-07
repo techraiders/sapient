@@ -1,154 +1,94 @@
 <div>
   <div class="jumbotron">
-    <h1 class="mat-display-1">SpacEx Launch Programs</h1>
+    <h1 class="logo">SpacEx Launch Programs</h1>
   </div>
 
-  <div class="container-fluid">
-    <div class="row">
-      <!-- Filters -->
-      <div class="col-sm-6 col-lg-4 col-xl-3">
-        <mat-card class="filters-card">
-          <mat-card-header>
-            <mat-card-title>Filters</mat-card-title>
-          </mat-card-header>
+  <main class="grid">
+    <aside>
+      <h4 class="filters-heading">Launch Year</h4>
 
-          <mat-card-content>
-            <h4 class="filters-heading">Launch Year</h4>
-
-            <div class="row">
-              <div
-                class="col-6 filters-btns-cols"
-                *ngFor="let item of years; index as i"
-              >
-                <button
-                  (click)="onFilterChange({ launch_year: item.value })"
-                  mat-flat-button
-                  color="primary"
-                  [ngClass]="{
-                    active: selectedFilters.launch_year === item.value
-                  }"
-                >
-                  {{ item.label }}
-                </button>
-              </div>
-            </div>
-
-            <h4 class="filters-heading">Successful Launch</h4>
-
-            <div class="row">
-              <div class="col-6 filters-btns-cols">
-                <button
-                  mat-flat-button
-                  color="primary"
-                  [ngClass]="{
-                    active: selectedFilters.launch_success === true
-                  }"
-                  (click)="onFilterChange({ launch_success: true })"
-                >
-                  True
-                </button>
-              </div>
-              <div class="col-6 filters-btns-cols">
-                <button
-                  mat-flat-button
-                  color="primary"
-                  [ngClass]="{
-                    active: selectedFilters.launch_success === false
-                  }"
-                  (click)="onFilterChange({ launch_success: false })"
-                >
-                  False
-                </button>
-              </div>
-            </div>
-
-            <h4 class="filters-heading">Successful Landing</h4>
-
-            <div class="row">
-              <div class="col-6 filters-btns-cols">
-                <button
-                  mat-flat-button
-                  color="primary"
-                  [ngClass]="{ active: selectedFilters.land_success === true }"
-                  (click)="onFilterChange({ land_success: true })"
-                >
-                  True
-                </button>
-              </div>
-              <div class="col-6 filters-btns-cols">
-                <button
-                  mat-flat-button
-                  color="primary"
-                  [ngClass]="{ active: selectedFilters.land_success === false }"
-                  (click)="onFilterChange({ land_success: false })"
-                >
-                  False
-                </button>
-              </div>
-            </div>
-          </mat-card-content>
-        </mat-card>
+      <div class="grid-btn-cols">
+        <button class="filter-btn" *ngFor="let item of years; index as i"
+          (click)="onFilterChange({ launch_year: item.value })" [ngClass]="{
+          active: selectedFilters.launch_year === item.value
+        }">
+          {{ item.label }}
+        </button>
       </div>
-      <!-- End of Filters -->
 
-      <!-- Grid / Gallery -->
-      <div class="col-sm-6 col-lg-8 col-xl-9">
-        <div class="row">
-          <div class="col-lg-6 col-xl-3 launches-grid" *ngFor="let item of launches">
-            <figure class="card-wrapper">
-              <img class="card-img"
-                [src]="item.mission_patch_small"
-                alt="Missio Photo"
-                loading="lazy"
-              />
-              <table class="card-content">
-                <tbody>
-                  <tr class="mission-row">
-                    <th>{{ item.mission_name }}</th>
-                    <td>#{{ item.flight_number }}</td>
-                  </tr>
-                  <tr>
-                    <th>Mission Ids:</th>
-                    <td></td>
-                  </tr>
-                  <tr>
-                    <td>
-                      <ul class="mission-id-list">
-                        <li *ngFor="let item of item.mission_id">
-                          {{ item }}
-                        </li>
-                      </ul>
-                    </td>
-                  </tr>
-                  <tr>
-                    <th>Launch Year:</th>
-                    <td>{{ item.launch_year }}</td>
-                  </tr>
-                  <tr>
-                    <th>Successful Launch:</th>
-                    <td>{{ item.launch_success }}</td>
-                  </tr>
-                  <tr>
-                    <th>Successful Landing:</th>
-                    <td>{{ item.land_success }}</td>
-                  </tr>
-                </tbody>
-              </table>
-            </figure>
-          </div>
-          <div class="col-12" *ngIf="!launches.length">
-            <h1 class="mat-h1">
-              No record available for the selected filter, please clear filter
-              or choose another filter.
-            </h1>
-          </div>
-        </div>
+      <h4 class="filters-heading">Successful Launch</h4>
+
+      <div class="grid-btn-cols">
+        <button class="filter-btn" [ngClass]="{
+            active: selectedFilters.launch_success === true
+          }" (click)="onFilterChange({ launch_success: true })">
+          True
+        </button>
+
+        <button class="filter-btn" [ngClass]="{
+            active: selectedFilters.launch_success === false
+          }" (click)="onFilterChange({ launch_success: false })">
+          False
+        </button>
       </div>
-      <!-- End of Grid / Gallery -->
-    </div>
-  </div>
 
-  <footer>
-    <h1 class="mat-h1">Developed by: Navneet Prakash</h1>
-  </footer>
-</div>
+      <h4 class="filters-heading">Successful Landing</h4>
+
+      <div class="grid-btn-cols">
+
+
+        <button class="filter-btn" [ngClass]="{ active: selectedFilters.land_success === true }"
+          (click)="onFilterChange({ land_success: true })">
+          True
+        </button>
+        <button class="filter-btn" [ngClass]="{ active: selectedFilters.land_success === false }"
+          (click)="onFilterChange({ land_success: false })">
+          False
+        </button>
+      </div>
+    </aside>
+
+    <section class="pictures-grid">
+      <figure *ngFor="let item of launches" class="picture-card">
+        <img class="card-img" [src]="item.mission_patch_small" alt="Missio Photo" loading="lazy" />
+        <table class="card-content">
+          <tbody>
+            <tr class="mission-row">
+              <th>{{ item.mission_name }}</th>
+              <td>#{{ item.flight_number }}</td>
+            </tr>
+            <tr>
+              <th>Mission Ids:</th>
+              <td></td>
+            </tr>
+            <tr>
+              <td>
+                <ul class="mission-id-list">
+                  <li *ngFor="let item of item.mission_id">
+                    {{ item }}
+                  </li>
+                </ul>
+              </td>
+            </tr>
+            <tr>
+              <th>Launch Year:</th>
+              <td>{{ item.launch_year }}</td>
+            </tr>
+            <tr>
+              <th>Successful Launch:</th>
+              <td>{{ item.launch_success }}</td>
+            </tr>
+            <tr>
+              <th>Successful Landing:</th>
+              <td>{{ item.land_success }}</td>
+            </tr>
+          </tbody>
+        </table>
+      </figure>
+    </section>
+
+  </main>
+
+ <footer>
+   <h1>Developed By: Navneet Prakash</h1>
+ </footer>
