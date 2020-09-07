@@ -1,27 +1,44 @@
-# Navneet
+### Sapient Assignment
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 10.0.7.
 
-## Development server
+## Powered By:
+[![N|Solid](https://miro.medium.com/max/3200/1*F83F9d1ki3fG6LMG3AvIMg.png)](https://nodesource.com/products/nsolid)
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
+[![Build Status](https://travis-ci.org/joemccann/dillinger.svg?branch=master)]()
 
-## Code scaffolding
+# App has following features:
+  - Filters records by launch year, launch success, and land success.
+  - Renders the first page on the server using NestJs.
+  - Page is responsive on mobile, tablet, and desktop devices.
+  - Installs as PWA in your device, irrespective of operating system.
+  
+##### [Working Demo](https://navneet-is-sapient.herokuapp.com/#/spacex-launch) 
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+### Tech
 
-## Build
+App uses a number of open source projects to work properly:
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+* [Angular](https://angular.io/) -  Single Page, Server Side Rendered, Progressive Web App.
+* [Angular Material](https://material.angular.io/) - Material Design components for Angular.
+* [NestJs](https://nestjs.com/) - A progressive Node.js framework.
+* [Twitter Bootstrap](https://getbootstrap.com/) - great UI boilerplate for modern web apps.
+* [node.js](https://nodejs.org/) - evented I/O for the backend.
+* [Express](https://expressjs.com/) - fast node.js network app framework [@tjholowaychuk]
+* [Gulp](https://gulpjs.com/) - the streaming build system.
+* [SCSS](https://sass-lang.com/) - Cleaner, Modular Beautiful Styles.
 
-## Running unit tests
+### Installation
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+App requires [Node.js](https://nodejs.org/) v10+ to run.
 
-## Running end-to-end tests
+Install the dependencies and devDependencies and follow below steps, to run the app. Visit localhost:4000 or the URL given by cloud serve to see the running app.
 
-Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+```sh
+$ cd sapient
+$ npm install
+$ npm run build
+$ npm start
+```
 
-## Further help
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
