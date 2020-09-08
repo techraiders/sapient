@@ -8,10 +8,14 @@
       <h4 class="filters-heading">Launch Year</h4>
 
       <div class="grid-btn-cols">
-        <button class="filter-btn" *ngFor="let item of years; index as i"
-          (click)="onFilterChange({ launch_year: item.value })" [ngClass]="{
-          active: selectedFilters.launch_year === item.value
-        }">
+        <button
+          class="filter-btn"
+          *ngFor="let item of years; index as i"
+          (click)="onFilterChange({ launch_year: item.value })"
+          [ngClass]="{
+            active: selectedFilters.launch_year === item.value
+          }"
+        >
           {{ item.label }}
         </button>
       </div>
@@ -19,15 +23,23 @@
       <h4 class="filters-heading">Successful Launch</h4>
 
       <div class="grid-btn-cols">
-        <button class="filter-btn" [ngClass]="{
+        <button
+          class="filter-btn"
+          [ngClass]="{
             active: selectedFilters.launch_success === true
-          }" (click)="onFilterChange({ launch_success: true })">
+          }"
+          (click)="onFilterChange({ launch_success: true })"
+        >
           True
         </button>
 
-        <button class="filter-btn" [ngClass]="{
+        <button
+          class="filter-btn"
+          [ngClass]="{
             active: selectedFilters.launch_success === false
-          }" (click)="onFilterChange({ launch_success: false })">
+          }"
+          (click)="onFilterChange({ launch_success: false })"
+        >
           False
         </button>
       </div>
@@ -35,14 +47,18 @@
       <h4 class="filters-heading">Successful Landing</h4>
 
       <div class="grid-btn-cols">
-
-
-        <button class="filter-btn" [ngClass]="{ active: selectedFilters.land_success === true }"
-          (click)="onFilterChange({ land_success: true })">
+        <button
+          class="filter-btn"
+          [ngClass]="{ active: selectedFilters.land_success === true }"
+          (click)="onFilterChange({ land_success: true })"
+        >
           True
         </button>
-        <button class="filter-btn" [ngClass]="{ active: selectedFilters.land_success === false }"
-          (click)="onFilterChange({ land_success: false })">
+        <button
+          class="filter-btn"
+          [ngClass]="{ active: selectedFilters.land_success === false }"
+          (click)="onFilterChange({ land_success: false })"
+        >
           False
         </button>
       </div>
@@ -50,7 +66,12 @@
 
     <section class="pictures-grid">
       <figure *ngFor="let item of launches" class="picture-card">
-        <img class="card-img" [src]="item.mission_patch_small" alt="Missio Photo" loading="lazy" />
+        <img
+          class="card-img"
+          [src]="item.mission_patch_small"
+          alt="Missio Photo"
+          loading="lazy"
+        />
         <table class="card-content">
           <tbody>
             <tr class="mission-row">
@@ -85,10 +106,12 @@
           </tbody>
         </table>
       </figure>
-    </section>
 
+      <p *ngIf="!launches?.length">No record exists for the selected filter.</p>
+    </section>
   </main>
 
- <footer>
-   <h1>Developed By: Navneet Prakash</h1>
- </footer>
+  <footer>
+    <h1>Developed By: Navneet Prakash</h1>
+  </footer>
+</div>

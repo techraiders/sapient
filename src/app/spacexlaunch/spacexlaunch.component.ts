@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { SpacexlaunchService } from './spacexlaunch.service';
-import { ActivatedRoute, Router, ParamMap, Params, Data } from '@angular/router';
-import { SharedService } from '../shared/shared.service';
-import { SpacexLaunch } from "./spacexlaunch.interface";
+import { ActivatedRoute, Router, Params, Data } from '@angular/router';
+import { SpacexLaunch } from './spacexlaunch.interface';
+import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
   selector: 'app-spacexlaunch',
@@ -23,13 +23,14 @@ export class SpacexlaunchComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private sls: SpacexlaunchService,
     private router: Router,
-    private sharedService: SharedService
+    private spinner: NgxSpinnerService
   ) {
     this.years = this.sls.years;
   }
 
   ngOnInit(): void {
-    this.activatedRoute.data.subscribe((data: Data) => {      
+    this.activatedRoute.data.subscribe((data: Data) => {
+      // this.spinner.hide();
       this.launches = this.processInputs(data);
     });
 
@@ -37,12 +38,24 @@ export class SpacexlaunchComponent implements OnInit {
       ({ launch_year, launch_success, land_success }: Params) => {
         if (launch_year) {
           this.selectedFilters.launch_year = +launch_year;
+        } else {
+          this.selectedFilters.launch_year = null;
         }
-        if (launch_success) {
-          this.selectedFilters.launch_success = launch_success === 'true';
+
+        if (launch_success === 'true') {
+          this.selectedFilters.launch_success = true;
+        } else if (launch_success === 'false') {
+          this.selectedFilters.launch_success = false;
+        } else {
+          this.selectedFilters.launch_success = null;
         }
-        if (land_success) {
-          this.selectedFilters.land_success = land_success === 'true';
+
+        if (land_success === 'true') {
+          this.selectedFilters.land_success = true;
+        } else if (land_success === 'false') {
+          this.selectedFilters.land_success = false;
+        } else {
+          this.selectedFilters.land_success = null;
         }
       }
     );
@@ -56,10 +69,7 @@ export class SpacexlaunchComponent implements OnInit {
     });
   }
 
-  private processInputs({ launches }: Data) {
-    setTimeout(() => {
-      this.sharedService.loading.next(false);
-    }, 1000);
+  private processInputs({ launches = [] }: Data) {
     return launches.map(
       (
         {
@@ -81,7 +91,8 @@ export class SpacexlaunchComponent implements OnInit {
           mission_name,
           flight_number,
           mission_id: [`mission ${index + 1}`],
-          mission_patch_small: mission_patch_small || `https://place-hold.it/256x256`,
+          mission_patch_small:
+            mission_patch_small || `https://place-hold.it/256x256`,
           launch_year,
           launch_success: launch_success || `Not Applicable`,
           land_success: land_success || `Not Applicable`,
