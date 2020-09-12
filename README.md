@@ -19,7 +19,6 @@
 App uses a number of open source projects to work properly:
 
 * [Angular](https://angular.io/) -  Single Page, Server Side Rendered, Progressive Web App.
-* [Angular Material](https://material.angular.io/) - Material Design components for Angular.
 * [NestJs](https://nestjs.com/) - A progressive Node.js framework.
 * [Twitter Bootstrap](https://getbootstrap.com/) - great UI boilerplate for modern web apps.
 * [node.js](https://nodejs.org/) - evented I/O for the backend.
