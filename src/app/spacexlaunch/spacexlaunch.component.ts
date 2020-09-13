@@ -3,6 +3,7 @@ import { SpacexlaunchService } from './spacexlaunch.service';
 import { ActivatedRoute, Router, Params, Data } from '@angular/router';
 import { Launch } from './spacexlaunch.interface';
 import { NgxSpinnerService } from 'ngx-spinner';
+import { Subscription } from 'rxjs';
 
 @Component({
   selector: 'app-spacexlaunch',
@@ -12,6 +13,7 @@ import { NgxSpinnerService } from 'ngx-spinner';
 export class SpacexlaunchComponent implements OnInit {
   years;
   launches: Array<Launch>;
+  launchesSubscription$: Subscription;
 
   selectedFilters = {
     launch_year: null,
@@ -30,7 +32,7 @@ export class SpacexlaunchComponent implements OnInit {
 
   ngOnInit(): void {
     this.activatedRoute.data.subscribe((data: Data) => {
-      // this.spinner.hide();
+      this.spinner.hide();
       this.launches = this.processInputs(data);
     });
     this.activatedRoute.queryParams.subscribe(
@@ -54,13 +56,27 @@ export class SpacexlaunchComponent implements OnInit {
         } else {
           this.selectedFilters.land_success = null;
         }
+
+        if (this.launchesSubscription$ instanceof Subscription) {
+          this.launchesSubscription$.unsubscribe();
+        }
+
+        this.launchesSubscription$ = this.sls.getLaunches(this.selectedFilters).subscribe(
+          (launches: Array<Launch>) => {
+            this.spinner.hide();
+            this.launches = this.processInputs({ launches });
+          },
+          (err) => {
+            console.log(err);
+          }
+        );
       }
     );
   }
 
   onFilterChange(filter): void {
     const queryParams: any = {};
-    this.router.navigate(['/spacex-launch'], {
+    this.router.navigate(['spacex-launch'], {
       queryParams: filter,
       queryParamsHandling: 'merge',
     });

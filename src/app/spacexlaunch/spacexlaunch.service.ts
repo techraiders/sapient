@@ -48,7 +48,7 @@ export class SpacexlaunchService {
       params = params.append('launch_success', launch_success);
     }
 
-    // this.spinner.show();
+    this.spinner.show();
     return this.http.get<Array<Launch>>(`/launches`, { params });
   }
 }
