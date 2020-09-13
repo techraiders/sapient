@@ -1,17 +1,9 @@
-.jumbotron {
-  color: #020202;
-  margin: 1em 0;
-  .logo {
-    padding-left: 1em;
-  }
-}
-
 .grid {
   display: grid;
   grid-template-columns: 1fr 4fr;
   gap: 1em;
   margin-bottom: 3em;
-  
+
   .filters-heading {
     text-align: center;
     border-bottom: 1px solid #c4bcba;

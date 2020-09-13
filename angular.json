@@ -93,6 +93,7 @@
               "src/manifest.webmanifest"
             ],
             "styles": [
+              "./node_modules/bootstrap/scss/bootstrap-reboot.scss",
               "src/styles.scss"
             ],
             "scripts": []
