@@ -17,6 +17,7 @@ const routes: Routes = [
     RouterModule.forRoot(routes, {
       initialNavigation: 'enabled',
       useHash: true,
+      onSameUrlNavigation: 'reload'
     }),
   ],
   exports: [RouterModule],

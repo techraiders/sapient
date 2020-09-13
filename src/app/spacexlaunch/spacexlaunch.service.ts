@@ -1,13 +1,17 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { SpacexLaunch } from './spacexlaunch.interface';
+import { Launch } from './spacexlaunch.interface';
 import { NgxSpinnerService } from 'ngx-spinner';
 
 @Injectable()
 export class SpacexlaunchService {
-  private currentYear = new Date().getFullYear();
+  private readonly currentYear = new Date().getFullYear();
   years = [];
 
+  /**
+   *
+   * @param spinner shows while fetching data from backend.
+   */
   constructor(private http: HttpClient, private spinner: NgxSpinnerService) {
     let startFrom = this.currentYear - 14;
     while (startFrom <= this.currentYear) {
@@ -17,11 +21,11 @@ export class SpacexlaunchService {
   }
 
   /**
-   *
-   * @param {number} limit - How many missions to fetch the database from?
-   * @param {number} launch_year - Which year the mission to fetch the database of?
-   * @param {boolean} launch_success - Whether to fetch mission whose lauch is successful?
-   * @param {boolean} land_success - Whether to fetch mission which landed successfully?
+   * Retrieves records of launches from database by calling API.
+   * @param number limit - How many missions to fetch the database from?
+   * @param number launch_year - Which year the mission to fetch the database of?
+   * @param boolean launch_success - Whether to fetch mission whose lauch is successful?
+   * @param boolean land_success - Whether to fetch mission which landed successfully?
    */
 
   getLaunches({
@@ -45,6 +49,6 @@ export class SpacexlaunchService {
     }
 
     // this.spinner.show();
-    return this.http.get<Array<SpacexLaunch>>(`/launches`, { params });
+    return this.http.get<Array<Launch>>(`/launches`, { params });
   }
 }

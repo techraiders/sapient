@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SpacexlaunchService } from './spacexlaunch.service';
 import { ActivatedRoute, Router, Params, Data } from '@angular/router';
-import { SpacexLaunch } from './spacexlaunch.interface';
+import { Launch } from './spacexlaunch.interface';
 import { NgxSpinnerService } from 'ngx-spinner';
 
 @Component({
@@ -11,7 +11,7 @@ import { NgxSpinnerService } from 'ngx-spinner';
 })
 export class SpacexlaunchComponent implements OnInit {
   years;
-  launches: Array<SpacexLaunch>;
+  launches: Array<Launch>;
 
   selectedFilters = {
     launch_year: null,
@@ -33,7 +33,6 @@ export class SpacexlaunchComponent implements OnInit {
       // this.spinner.hide();
       this.launches = this.processInputs(data);
     });
-
     this.activatedRoute.queryParams.subscribe(
       ({ launch_year, launch_success, land_success }: Params) => {
         if (launch_year) {
@@ -41,7 +40,6 @@ export class SpacexlaunchComponent implements OnInit {
         } else {
           this.selectedFilters.launch_year = null;
         }
-
         if (launch_success === 'true') {
           this.selectedFilters.launch_success = true;
         } else if (launch_success === 'false') {
@@ -49,7 +47,6 @@ export class SpacexlaunchComponent implements OnInit {
         } else {
           this.selectedFilters.launch_success = null;
         }
-
         if (land_success === 'true') {
           this.selectedFilters.land_success = true;
         } else if (land_success === 'false') {
@@ -69,7 +66,7 @@ export class SpacexlaunchComponent implements OnInit {
     });
   }
 
-  private processInputs({ launches = [] }: Data) {
+  private processInputs({ launches = [] }: Data): Array<Launch> {
     return launches.map(
       (
         {
