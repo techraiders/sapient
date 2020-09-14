@@ -11,7 +11,7 @@
       "prefix": "app",
       "architect": {
         "build": {
-          "builder": "@angular-builders/custom-webpack:browser",
+          "builder": "@angular-devkit/build-angular:browser",
           "options": {
             "outputPath": "dist/navneet/browser",
             "index": "src/index.html",
@@ -28,14 +28,7 @@
               "./node_modules/bootstrap/scss/bootstrap-reboot.scss",
               "src/styles.scss"
             ],
-            "scripts": [],
-            "customWebpackConfig": {
-              "path": "./extra-webpack.config.js",
-              "mergeStrategies": {
-                "externals": "replace"
-              }
-            },
-            "indexTransform": "./index-html-transform.ts"
+            "scripts": []
           },
           "configurations": {
             "production": {

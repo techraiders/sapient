@@ -2,10 +2,12 @@
   "name": "navneet",
   "version": "0.0.0",
   "engines": {
-    "node": "12.18.3"
+    "node": "12.18.3",
+    "npm": "6.14.8"
   },
   "scripts": {
     "ng": "ng",
+    "prestart": "npm run build",
     "start": "npm run serve:ssr",
     "build": "npm run build:ssr",
     "test": "ng test",
@@ -29,14 +31,11 @@
     "@angular/platform-server": "~10.0.11",
     "@angular/router": "~10.0.11",
     "@angular/service-worker": "~10.0.11",
-    "@nestjs/common": "^7.0.0",
-    "@nestjs/core": "^7.0.0",
-    "@nestjs/ng-universal": "^4.0.1",
-    "@nestjs/platform-express": "^7.0.0",
+    "@nguniversal/express-engine": "^10.1.0",
     "bootstrap": "^4.5.2",
     "class-transformer": "^0.2.3",
     "class-validator": "^0.9.1",
-    "express": "^4.15.2",
+    "express": "^4.17.1",
     "ngx-spinner": "^10.0.1",
     "reflect-metadata": "^0.1.13",
     "rxjs": "~6.5.5",
@@ -44,7 +43,6 @@
     "zone.js": "~0.10.3"
   },
   "devDependencies": {
-    "@angular-builders/custom-webpack": "^10.0.1",
     "@angular-devkit/build-angular": "~0.1000.7",
     "@angular/cli": "~10.0.7",
     "@angular/compiler-cli": "~10.0.11",
@@ -53,10 +51,8 @@
     "@types/jasmine": "~3.5.0",
     "@types/jasminewd2": "~2.0.3",
     "@types/node": "^12.11.1",
-    "brotli-webpack-plugin": "^1.1.0",
     "codelyzer": "^6.0.0",
     "compression": "^1.7.4",
-    "compression-webpack-plugin": "^5.0.2",
     "jasmine-core": "~3.5.0",
     "jasmine-spec-reporter": "~5.0.0",
     "karma": "~5.0.0",
