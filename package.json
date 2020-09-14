@@ -1,6 +1,10 @@
 {
   "name": "navneet",
   "version": "0.0.0",
+  "engines": {
+    "node": "12.18.3",
+    "npm": "6.14.8"
+  },
   "scripts": {
     "ng": "ng",
     "start": "npm run serve:ssr",
@@ -26,14 +30,11 @@
     "@angular/platform-server": "~10.0.11",
     "@angular/router": "~10.0.11",
     "@angular/service-worker": "~10.0.11",
-    "@nestjs/common": "^7.0.0",
-    "@nestjs/core": "^7.0.0",
-    "@nestjs/ng-universal": "^4.0.1",
-    "@nestjs/platform-express": "^7.0.0",
+    "@nguniversal/express-engine": "^10.1.0",
     "bootstrap": "^4.5.2",
     "class-transformer": "^0.2.3",
     "class-validator": "^0.9.1",
-    "express": "^4.15.2",
+    "express": "^4.17.1",
     "ngx-spinner": "^10.0.1",
     "reflect-metadata": "^0.1.13",
     "rxjs": "~6.5.5",
