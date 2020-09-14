@@ -1,6 +1,9 @@
 {
   "name": "navneet",
   "version": "0.0.0",
+  "engines": {
+    "node": "12.18.3"
+  },
   "scripts": {
     "ng": "ng",
     "start": "npm run serve:ssr",
@@ -41,6 +44,7 @@
     "zone.js": "~0.10.3"
   },
   "devDependencies": {
+    "@angular-builders/custom-webpack": "^10.0.1",
     "@angular-devkit/build-angular": "~0.1000.7",
     "@angular/cli": "~10.0.7",
     "@angular/compiler-cli": "~10.0.11",
@@ -49,8 +53,10 @@
     "@types/jasmine": "~3.5.0",
     "@types/jasminewd2": "~2.0.3",
     "@types/node": "^12.11.1",
+    "brotli-webpack-plugin": "^1.1.0",
     "codelyzer": "^6.0.0",
     "compression": "^1.7.4",
+    "compression-webpack-plugin": "^5.0.2",
     "jasmine-core": "~3.5.0",
     "jasmine-spec-reporter": "~5.0.0",
     "karma": "~5.0.0",
