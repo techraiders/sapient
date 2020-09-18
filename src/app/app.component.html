@@ -1,14 +1,7 @@
 <div>
   <div class="jumbotron">
-    <h1 class="logo"> {{ title }} </h1>
+    <h1 class="logo">{{ title }}</h1>
   </div>
-  <ngx-spinner
-    bdColor="rgba(0, 0, 0, 0.8)"
-    size="default"
-    color="#fff"
-    type="ball-spin"
-    [fullScreen]="true"
-    ><p style="color: white">Loading...</p></ngx-spinner
-  >
+  <app-spinner *ngIf="loading$ | async"></app-spinner>
   <router-outlet></router-outlet>
 </div>

@@ -1,14 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { SpacexlaunchService } from './spacexlaunch.service';
 import { ActivatedRoute, Router, Params, Data } from '@angular/router';
 import { Launch } from './spacexlaunch.interface';
-import { NgxSpinnerService } from 'ngx-spinner';
 import { Subscription } from 'rxjs';
+import { SharedService } from '../shared/shared.service';
 
 @Component({
   selector: 'app-spacexlaunch',
   templateUrl: './spacexlaunch.component.html',
   styleUrls: ['./spacexlaunch.component.scss'],
+  changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SpacexlaunchComponent implements OnInit {
   years;
@@ -25,15 +26,16 @@ export class SpacexlaunchComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private sls: SpacexlaunchService,
     private router: Router,
-    private spinner: NgxSpinnerService
+    private changeDetector: ChangeDetectorRef,
+    private ss: SharedService
   ) {
     this.years = this.sls.years;
   }
 
   ngOnInit(): void {
     this.activatedRoute.data.subscribe((data: Data) => {
-      this.spinner.hide();
       this.launches = this.processInputs(data);
+      this.ss.loading$.next(false);
     });
     this.activatedRoute.queryParams.subscribe(
       ({ launch_year, launch_success, land_success }: Params) => {
@@ -63,8 +65,9 @@ export class SpacexlaunchComponent implements OnInit {
 
         this.launchesSubscription$ = this.sls.getLaunches(this.selectedFilters).subscribe(
           (launches: Array<Launch>) => {
-            this.spinner.hide();
             this.launches = this.processInputs({ launches });
+            this.changeDetector.detectChanges();
+            this.ss.loading$.next(false);
           },
           (err) => {
             console.log(err);
