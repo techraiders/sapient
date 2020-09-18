@@ -48,5 +48,9 @@ App uses a number of open source projects to work properly:
 * [Bootstrap](https://getbootstrap.com/) - Uses bootstrap-reboot.scss to reset default styles applied by web browser, to avoid cross browser compatibility issues.
 * [Compression](https://www.npmjs.com/package/compression) - Uses gzip compression and serves static files from server to browser with Content-Encoding gzip that reduces the requirement of transfer over network and speeeds up initial page load.
 
+### Performance of the app on Local Host:
+![](src/assets/images/performance-localhost.png)
 
+### Performance of the app on Deployment Server:
+![](src/assets/images/performance-deployed.png)
 
