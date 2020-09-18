@@ -22,14 +22,13 @@ $ npm start
 
 ### App has following features:
   - Filters records by launch year, launch success, and land success.
-  - Renders the first page on the server using NestJs.
+  - Renders the first page on the server using nguniversal.
   - Page is responsive on mobile, tablet, and desktop devices.
   - Installs as PWA in your device, irrespective of operating system.
-  - Mobile View: Page should have only one Column until 700 px. We have provided the Visual designs for Mobile screen.
   - Implementation follows Mobile first design approach.
   - Mobile View: Page has only one Column until 700 px.
   - Tablet View: Page has 2 columns between 700 and 1024 px.
-  - Desktop View: Page has 4 columns between 1024 and 1440 px. Beyond 1440px viewport.
+  - Desktop View: Page has 4 columns between 1024 and 1440 px.
   
 #### See: [Working Demo](https://navneet-is-sapient.herokuapp.com/#/spacex-launch) 
 
