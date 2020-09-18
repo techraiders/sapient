@@ -1,18 +1,14 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Launch } from './spacexlaunch.interface';
-import { NgxSpinnerService } from 'ngx-spinner';
+import { SharedService } from 'src/app/shared/shared.service';
 
 @Injectable()
 export class SpacexlaunchService {
   private readonly currentYear = new Date().getFullYear();
   years = [];
 
-  /**
-   *
-   * @param spinner shows while fetching data from backend.
-   */
-  constructor(private http: HttpClient, private spinner: NgxSpinnerService) {
+  constructor(private http: HttpClient, private ss: SharedService) {
     let startFrom = this.currentYear - 14;
     while (startFrom <= this.currentYear) {
       this.years.push({ label: `${startFrom}`, value: startFrom });
@@ -47,8 +43,7 @@ export class SpacexlaunchService {
     if (launch_success !== undefined && launch_success !== null) {
       params = params.append('launch_success', launch_success);
     }
-
-    this.spinner.show();
+    this.ss.loading$.next(true);
     return this.http.get<Array<Launch>>(`/launches`, { params });
   }
 }

@@ -1,7 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
-import { NgxSpinnerModule } from 'ngx-spinner';
 
 import { SpacexlaunchComponent } from './spacexlaunch.component';
 import { SpacexlaunchService } from './spacexlaunch.service';
@@ -15,7 +14,7 @@ describe('SpacexlaunchComponent', () => {
     TestBed.configureTestingModule({
       schemas: [CUSTOM_ELEMENTS_SCHEMA],
       declarations: [SpacexlaunchComponent],
-      imports: [RouterTestingModule, NgxSpinnerModule],
+      imports: [RouterTestingModule],
       providers: [
         { provide: SpacexlaunchService, useClass: SpacexlaunchServiceStub },
       ],

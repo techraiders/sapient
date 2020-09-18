@@ -28,7 +28,6 @@ App uses a number of open source projects to work properly:
 * [Jasmine](https://jasmine.github.io/) - Uses jasmine to unit test feature like component, service etc.
 * [Karma](https://karma-runner.github.io/latest/index.html) - Uses Karma to run unit test cases.
 * [Bootstrap](https://getbootstrap.com/) - Uses bootstrap-reboot.scss to reset default styles applied by web browser, to avoid cross browser compatibility issues.
-* [ngx-spinner](https://napster2210.github.io/ngx-spinner/) - Used to show spinner while fecting records from the backend.
 * [Compression](https://www.npmjs.com/package/compression) - Used to compress response to reduce inital page load time.
 
 ### Installation
