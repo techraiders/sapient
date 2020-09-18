@@ -35,7 +35,6 @@ export class SpacexlaunchComponent implements OnInit {
     this.activatedRoute.data.subscribe((data: Data) => {
       this.launches = this.processInputs(data);
       this.ss.loading$.next(false);
-      console.log(JSON.stringify(this.launches[0]));
     });
     this.activatedRoute.queryParams.subscribe(
       ({ launch_year, launch_success, land_success }: Params) => {

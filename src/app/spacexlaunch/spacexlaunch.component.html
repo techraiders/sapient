@@ -61,7 +61,7 @@
     </aside>
 
     <section class="pictures-grid">
-      <figure *ngFor="let item of launches" class="picture-card">
+      <figure *ngFor="let item of launches;" class="picture-card">
         <img
           class="card-img"
           [src]="item.mission_patch_small"
@@ -81,7 +81,7 @@
             <tr>
               <td>
                 <ul class="mission-id-list">
-                  <li *ngFor="let item of item.mission_id">
+                  <li *ngFor="let item of item.mission_id;">
                     {{ item }}
                   </li>
                 </ul>
