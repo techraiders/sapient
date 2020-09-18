@@ -1,7 +1,6 @@
 import { ChangeDetectionStrategy, ChangeDetectorRef, Component, OnInit } from '@angular/core';
 import { SpacexlaunchService } from './spacexlaunch.service';
 import { ActivatedRoute, Router, Params, Data } from '@angular/router';
-import { Launch } from './spacexlaunch.interface';
 import { Subscription } from 'rxjs';
 import { SharedService } from '../shared/shared.service';
 
@@ -9,11 +8,11 @@ import { SharedService } from '../shared/shared.service';
   selector: 'app-spacexlaunch',
   templateUrl: './spacexlaunch.component.html',
   styleUrls: ['./spacexlaunch.component.scss'],
-  changeDetection: ChangeDetectionStrategy.OnPush
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class SpacexlaunchComponent implements OnInit {
   years;
-  launches: Array<Launch>;
+  launches: Array<any>;
   launchesSubscription$: Subscription;
 
   selectedFilters = {
@@ -36,6 +35,7 @@ export class SpacexlaunchComponent implements OnInit {
     this.activatedRoute.data.subscribe((data: Data) => {
       this.launches = this.processInputs(data);
       this.ss.loading$.next(false);
+      console.log(JSON.stringify(this.launches[0]));
     });
     this.activatedRoute.queryParams.subscribe(
       ({ launch_year, launch_success, land_success }: Params) => {
@@ -63,16 +63,18 @@ export class SpacexlaunchComponent implements OnInit {
           this.launchesSubscription$.unsubscribe();
         }
 
-        this.launchesSubscription$ = this.sls.getLaunches(this.selectedFilters).subscribe(
-          (launches: Array<Launch>) => {
-            this.launches = this.processInputs({ launches });
-            this.changeDetector.detectChanges();
-            this.ss.loading$.next(false);
-          },
-          (err) => {
-            console.log(err);
-          }
-        );
+        this.launchesSubscription$ = this.sls
+          .getLaunches(this.selectedFilters)
+          .subscribe(
+            (launches: Array<any>) => {
+              this.launches = this.processInputs({ launches });
+              this.changeDetector.detectChanges();
+              this.ss.loading$.next(false);
+            },
+            (err) => {
+              console.log(err);
+            }
+          );
       }
     );
   }
@@ -85,7 +87,7 @@ export class SpacexlaunchComponent implements OnInit {
     });
   }
 
-  private processInputs({ launches = [] }: Data): Array<Launch> {
+  private processInputs({ launches = [] }: Data): Array<any> {
     return launches.map(
       (
         {

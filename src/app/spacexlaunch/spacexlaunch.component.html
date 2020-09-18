@@ -6,7 +6,7 @@
       <div class="grid-btn-cols">
         <button
           class="filter-btn"
-          *ngFor="let item of years; index as i"
+          *ngFor="let item of years; index as i;"
           (click)="onFilterChange({ launch_year: item.value })"
           [ngClass]="{
             active: selectedFilters.launch_year === item.value

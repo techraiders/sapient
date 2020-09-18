@@ -14,13 +14,3 @@ interface FirstStage {
 interface Rocket {
   first_stage: FirstStage;
 }
-
-export interface Launch {
-  mission_name: string;
-  flight_number: number;
-  mission_id: Array<string>;
-  links: Links;
-  launch_year: string;
-  launch_success: boolean;
-  rocket: Rocket;
-}

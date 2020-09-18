@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
-import { Launch } from './spacexlaunch.interface';
 import { SharedService } from 'src/app/shared/shared.service';
 
 @Injectable()
@@ -44,6 +43,6 @@ export class SpacexlaunchService {
       params = params.append('launch_success', launch_success);
     }
     this.ss.loading$.next(true);
-    return this.http.get<Array<Launch>>(`/launches`, { params });
+    return this.http.get<Array<any>>(`/launches`, { params });
   }
 }
