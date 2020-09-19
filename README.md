@@ -10,7 +10,7 @@
 
 ### Installation
 App requires [Node.js](https://nodejs.org/) v12+ to run.
-Install the dependencies and devDependencies and follow below steps, to run the app. Visit localhost:4000 or the URL given by cloud serve to see the running app.
+Install the dependencies and devDependencies and follow below steps, to run the app. Visit localhost:4000 or the URL given by cloud server to see the running app.
 
 ```sh
 $ git clone https://github.com/techraiders/sapient.git
